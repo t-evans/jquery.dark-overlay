@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery.dark-overlay Example</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="jquery.dark-overlay.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('div.darken').click(function() {
+                $(this).toggleOverlay();
+            });
+            $('.25').click(function() {
+                $(this).siblings('.darken').darken(0.25);
+            });
+            $('.50').click(function() {
+                $(this).siblings('.darken').darken(0.50);
+            });
+            $('.75').click(function() {
+                $(this).siblings('.darken').darken(0.75);
+            });
+            $('.50-no-clickthrough').click(function() {
+                $(this).siblings('.darken').darken({
+                    'opacity': 0.5,
+                    'allowClickThrough': false
+                });
+            });
+
+            $('.innerLink').click(function() {
+                alert('Try to click me after selecting the "without clickthrough" option');
+            });
+
+            $('.clear').click(function() {
+                $(this).siblings('.darken').undarken();
+            });
+
+            $('#darken-all').click(function() {
+                $('.darken').darken();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="square">
+        <div class="darken" style="background-color: #FF946F; width: 200px; height: 100px; padding-top: 50px; text-align: center;">
+            Click to toggle overlay
+        </div>
+        Darken: <a href="javascript:void(0)" class="25">25%</a> <a href="javascript:void(0)" class="50">50%</a> <a href="javascript:void(0)" class="75">75%</a><br>
+        <a href="javascript:void(0)" class="50-no-clickthrough">50% without clickthrough</a><br>
+        <a class="clear" href="javascript:void(0)">clear</a>
+    </div>
+    <div id="image">
+        <div class="darken" style="margin-top: 50px; background: url('images/car.jpg'); background-size: 200px 150px; width: 200px; height: 100px; padding-top: 50px; text-align: center;"></div>
+        Darken: <a href="javascript:void(0)" class="25">25%</a> <a href="javascript:void(0)" class="50">50%</a> <a href="javascript:void(0)" class="75">75%</a><br>
+        <a href="javascript:void(0)" class="50-no-clickthrough">50% without clickthrough</a><br>
+        <a class="clear" href="javascript:void(0)">clear</a>
+    </div>
+
+    <br><br><a id="darken-all" href="javascript:void(0)">Darken both</a>
+</body>
+</html>
