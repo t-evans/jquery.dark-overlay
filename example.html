@@ -24,6 +24,12 @@
                     'allowClickThrough': false
                 });
             });
+            $('.50-fade-in').click(function() {
+                $(this).siblings('.darken').darken({
+                    'opacity': 0.5,
+                    'fadeInDuration': 'slow'
+                });
+            });
 
             $('.innerLink').click(function() {
                 alert('Try to click me after selecting the "without clickthrough" option');
@@ -31,6 +37,9 @@
 
             $('.clear').click(function() {
                 $(this).siblings('.darken').undarken();
+            });
+            $('.clear-fade-out').click(function() {
+                $(this).siblings('.darken').undarken('slow');
             });
 
             $('#darken-all').click(function() {
@@ -46,7 +55,9 @@
         </div>
         Darken: <a href="javascript:void(0)" class="25">25%</a> <a href="javascript:void(0)" class="50">50%</a> <a href="javascript:void(0)" class="75">75%</a><br>
         <a href="javascript:void(0)" class="50-no-clickthrough">50% without clickthrough</a><br>
-        <a class="clear" href="javascript:void(0)">clear</a>
+        <a href="javascript:void(0)" class="50-fade-in">50% fade in</a><br>
+        <a class="clear" href="javascript:void(0)">clear</a><br>
+        <a class="clear-fade-out" href="javascript:void(0)">clear - fade out</a>
     </div>
     <div id="image">
         <div class="darken" style="margin-top: 50px; background: url('images/car.jpg'); background-size: 200px 150px; width: 200px; height: 100px; padding-top: 50px; text-align: center;"></div>

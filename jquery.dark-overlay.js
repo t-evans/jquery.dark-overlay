@@ -41,7 +41,10 @@
             if (opts.allowClickThrough)
                 $overlay.css('pointer-events', 'none');
             $elementToDarken.data(OVERLAY_ID_KEY, overlayId);
+
+            $overlay.hide();
             $('body').prepend($overlay);
+            $overlay.fadeIn(opts.fadeInDuration);
         };
 
     $.fn.darken = function(opts) {
@@ -53,7 +56,8 @@
         }
         var options = $.extend({
             'opacity': 0.5,
-            'allowClickThrough': true
+            'allowClickThrough': true,
+            'fadeInDuration': 0
         }, opts);
         $$.each(function() {
             addDarkOverlay($(this), options);
@@ -61,10 +65,15 @@
         return $$;
     };
 
-    $.fn.undarken = function() {
+    $.fn.undarken = function(fadeOutDuration) {
         var $this = $(this),
-            overlayId = $this.data(OVERLAY_ID_KEY);
-        $('#' + overlayId).remove();
+            overlayId = $this.data(OVERLAY_ID_KEY),
+            $overlay = $('#' + overlayId);
+        if (typeof fadeOutDuration === 'undefined')
+            fadeOutDuration = 0;
+        $overlay.fadeOut(fadeOutDuration, function() {
+            $overlay.remove();
+        });
         $this.data(OVERLAY_ID_KEY, null);
     };
 
