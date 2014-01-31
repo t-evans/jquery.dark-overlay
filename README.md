@@ -8,6 +8,7 @@ This currently only works on static elements (i.e. if you change the size or pos
 This hasn't yet been tested throughly on all browsers. In particular, I doubt that the "allowClickThrough" option works on older IE browsers (I don't have any older IE browsers handy to test with).
 
 Example usage:
+
     $('SELECTOR').darken();
 
     which is equivalent to...
